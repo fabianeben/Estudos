@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{9EDC5100-FCC3-4AD2-8CFE-4FDBE50D6DE9}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="PrjLogicaProgramacao.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="prjTeste.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="PrjLogicaProgramacao">
+        <MSBuild Projects="PrjLogicaProgramacao.dproj"/>
+    </Target>
+    <Target Name="PrjLogicaProgramacao:Clean">
+        <MSBuild Projects="PrjLogicaProgramacao.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="PrjLogicaProgramacao:Make">
+        <MSBuild Projects="PrjLogicaProgramacao.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="prjTeste">
+        <MSBuild Projects="prjTeste.dproj"/>
+    </Target>
+    <Target Name="prjTeste:Clean">
+        <MSBuild Projects="prjTeste.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="prjTeste:Make">
+        <MSBuild Projects="prjTeste.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="PrjLogicaProgramacao;prjTeste"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="PrjLogicaProgramacao:Clean;prjTeste:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="PrjLogicaProgramacao:Make;prjTeste:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
